@@ -4,6 +4,7 @@ if exists("g:loaded_ruby_run") || &cp
   finish
 endif
 let g:loaded_ruby_run="v0.1"
+let g:ruby_run_command="ruby"
 let s:keepcpo           = &cpo
 set cpo&vim
 
@@ -17,7 +18,7 @@ vnoremap <silent> <C-E> :call RubyRangeRun()<CR>
 " ------------------------------------------------------------------------------
 
 function! RubyRun()
-  echo system("ruby -w ".expand("%:p"))
+  echo system(g:ruby_run_command . " -w ".expand("%:p"))
 endfunction
 
 function! RubyRangeRun() range
